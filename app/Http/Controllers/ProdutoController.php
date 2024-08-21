@@ -32,9 +32,10 @@
             }
         }
 
-        public function mostra()
+        public function mostra($id)
         {
-            $id = request('id', '0');
+            // $id = request('id', '0');
+            // $id = request()->route('id');
 
             $resposta = DB::select('SELECT * FROM produtos WHERE id = :id', ['id' => $id]);
 

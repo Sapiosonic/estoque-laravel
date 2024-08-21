@@ -18,7 +18,7 @@
                     <td><?= $produto->valor ?></td>
                     <td><?= $produto->descricao ?></td>
                     <td><?= $produto->quantidade ?></td>
-                    <td><a href="/produtos/mostra?id=<?= $produto->id ?>"><span class="bi bi-search" aria-hidden="true"></span></a></td>
+                    <td><a href="/produtos/mostra/<?= $produto->id ?>"><span class="bi bi-search" aria-hidden="true"></span></a></td>
                 </tr>
                 <?php endforeach ?>
             </table>
