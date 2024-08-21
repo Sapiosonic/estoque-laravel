@@ -10,3 +10,4 @@ construir habilidades fundamentais para o uso do framework Laravel.
 * Composer 2.7.7
 * Laravel  10.48.20
 * Bootstrap 5.3.0
+* MySQL 8.0.30

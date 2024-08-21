@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/produtos', [ProdutoController::class, 'lista']);
 Route::get('/produtos/mostra/{id}', [ProdutoController::class, 'mostra'])->where('id', '[0-9]+');
+Route::get('/produtos/novo', [ProdutoController::class, 'novo']);
