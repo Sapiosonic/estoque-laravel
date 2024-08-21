@@ -19,17 +19,15 @@
             // $produto->qtd_estoque = 5;
             // $produto->saveOrFail();
             // nosso código vai aqui!
-            
-            $html = '<h1>Listagem de produtos com Laravel</h1>';
-            $html .= '<ul>';
+                        
             $produtos = DB::select('SELECT * FROM produtos');
             // dd($produto);
+            // return view('listagem')->with('produtos', $produtos);
+            // return view('listagem')->withProdutos($produtos);
 
-            foreach ($produtos as $produto) {
-                $html .= '<li> Nome: '. $produto->name . ', Descrição:'. $produto->descricao .'</li>';
-                }
-            $html .= '</ul>';
-            return $html;
-                   
+            if(view()->exists('listagem'))
+            {
+                return view('listagem')->with('produtos', $produtos);
+            }
         }
     }
