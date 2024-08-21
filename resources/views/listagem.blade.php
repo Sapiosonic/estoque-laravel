@@ -12,7 +12,7 @@
 
         <table class="table table-striped table-bordered table-hover">
             @foreach ($produtos as $produto)
-                <tr>
+            <tr class="{{ $produto->quantidade <= 1 ? 'table-danger' : '' }}">
                     <td> {{ e($produto->nome) }}</td>
                     <td> {{ e($produto->valor) }}</td>
                     <td> {{ e($produto->descricao) }}</td>
@@ -22,4 +22,8 @@
             @endforeach
         </table>
     @endif
+
+    <h4>
+        <span class="badge bg-danger text-white float-end">Um ou menos itens no estoque</span>
+    </h4>
 @stop
