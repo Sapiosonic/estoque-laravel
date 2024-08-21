@@ -4,6 +4,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Support\Facades\DB;
     use App\Models\Produto;
+    use Illuminate\Http\Request;
 
 
 
@@ -30,4 +31,19 @@
                 return view('listagem')->with('produtos', $produtos);
             }
         }
+
+        public function mostra()
+        {
+            $id = request('id', '0');
+
+            $resposta = DB::select('SELECT * FROM produtos WHERE id = :id', ['id' => $id]);
+
+            if(empty($resposta))
+            {
+                return "Esse produto não existe";
+            }
+            
+            return view('detalhes')->with('produto', $resposta[0]);
+        }
+
     }
