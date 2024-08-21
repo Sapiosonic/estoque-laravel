@@ -26,9 +26,9 @@
             // return view('listagem')->with('produtos', $produtos);
             // return view('listagem')->withProdutos($produtos);
 
-            if(view()->exists('listagem'))
+            if(view()->exists('produto.listagem'))
             {
-                return view('listagem')->with('produtos', $produtos);
+                return view('produto.listagem')->with('produtos', $produtos);
                 // return view('listagem')->with('produtos', array());
             }
         }
@@ -45,6 +45,6 @@
                 return "Esse produto não existe";
             }
             
-            return view('detalhes')->with('produto', $resposta[0]);
+            return view('produto.detalhes')->with('produto', $resposta[0]);
         }
     }
