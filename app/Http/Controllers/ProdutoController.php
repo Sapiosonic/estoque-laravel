@@ -29,6 +29,7 @@
             if(view()->exists('listagem'))
             {
                 return view('listagem')->with('produtos', $produtos);
+                // return view('listagem')->with('produtos', array());
             }
         }
 
@@ -46,5 +47,4 @@
             
             return view('detalhes')->with('produto', $resposta[0]);
         }
-
     }
