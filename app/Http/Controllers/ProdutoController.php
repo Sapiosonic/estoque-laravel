@@ -18,10 +18,11 @@
             // $produto->descricao = 'Máquina de lavar da Samsung 15kg modo enxague, centrífuga.';
             // $produto->preco = 3100.90;
             // $produto->qtd_estoque = 5;
+            // $produto = Produto::FindOrNew('id')
             // $produto->saveOrFail();
             // nosso código vai aqui!
-                        
-            $produtos = DB::select('SELECT * FROM produtos');
+            
+            $produtos = Produto::all();
             // dd($produto);
             // return view('listagem')->with('produtos', $produtos);
             // return view('listagem')->withProdutos($produtos);
@@ -38,18 +39,42 @@
             // $id = request('id', '0');
             // $id = request()->route('id');
 
-            $resposta = DB::select('SELECT * FROM produtos WHERE id = :id', ['id' => $id]);
-
+            $resposta = Produto::find($id);
+            
             if(empty($resposta))
             {
                 return "Esse produto não existe";
             }
             
-            return view('produto.detalhes')->with('produto', $resposta[0]);
+            return view('produto.detalhes')->with('produto', $resposta);
         }
 
         public function novo()
         {
             return view('produto.formulario');
+        }
+
+        public function adiciona()
+        {
+            // deve adicionar os produtos no banco.
+
+            // 1) pegar dados no formulário.
+            $nome  = request('nome');
+            $descricao  = request('descricao');
+            $valor  = request('valor');
+            $quantidade  = request('quantidade');
+
+            // 2) salvar no banco de dados.
+            Produto::create([
+                'nome' => $nome,
+                'descricao' => $descricao,
+                'valor' => $valor,
+                'quantidade' => $quantidade
+            ]);
+            
+
+            // 3) retornar alguma view.
+
+            return view('produto.adicionado')->with('nome', $nome);
         }
     }

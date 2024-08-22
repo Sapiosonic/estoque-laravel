@@ -11,3 +11,4 @@ construir habilidades fundamentais para o uso do framework Laravel.
 * Laravel  10.48.20
 * Bootstrap 5.3.0
 * MySQL 8.0.30
+* Laravel Debugbar 3.13

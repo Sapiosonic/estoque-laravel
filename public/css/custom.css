@@ -4,6 +4,11 @@ h1{
     margin: 15px 0 !important;
 }
 
+.nav-menu {
+    display: flex;
+    gap: 15px;
+}
+
 nav.navbar.navbar-default{
     background-color: #337ab7;
     border-color: #2e6da4;
@@ -20,6 +25,10 @@ li p.navbar-text, a.navbar-brand {
 }
 
 footer.footer {
+    padding: 0.75rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #337ab7;
     border-color: #2e6da4;
     margin-top: 55px;
@@ -27,6 +36,7 @@ footer.footer {
     border-radius: 5px;
 }
 
-footer.footer p {
-    padding: 10px;
+.copyright {
+    padding: 0 !important;
+    margin-bottom: 0 !important;
 }
