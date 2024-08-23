@@ -16,7 +16,8 @@
                 <th>Valor</th>
                 <th>Descrição</th>
                 <th>Quantidade</th>
-                <th>Ação</th>
+                <th>Ver</th>
+                <th></th>
             </thead>
             <tbody>
                 @foreach ($produtos as $produto)
@@ -25,7 +26,8 @@
                         <td> {{ e($produto->valor) }}</td>
                         <td> {{ e($produto->descricao) }}</td>
                         <td> {{ e($produto->quantidade) }}</td>
-                        <td><a href="/produtos/mostra/{{ $produto->id }}"><span class="bi bi-search" aria-hidden="true"></span></a></td>
+                        <td><a href="{{ route('produto.mostra', $produto->id) }}"><span class="bi bi-search" aria-hidden="true"></span></a></td>
+                        <td><a href="{{ route('produto.remove', $produto->id) }}"><span class="bi bi-trash" aria-hidden="true"></span></a></td>
                     </tr>
                 @endforeach
             </tbody>
