@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Produto extends Model
 {
     use HasFactory;
+    protected $table = 'produtos';
+    public $timestamps = false;
 
     protected $fillable = [
         'nome',
@@ -16,4 +18,5 @@ class Produto extends Model
         'quantidade'
     ];
 
+    protected $guarded = ['id'];
 }
