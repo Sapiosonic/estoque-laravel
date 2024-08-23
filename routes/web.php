@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produtos', [ProdutoController::class, 'lista']);
+Route::get('/produtos', [ProdutoController::class, 'lista'])->name('produto.lista');
 Route::get('/produtos/mostra/{id}', [ProdutoController::class, 'mostra'])->where('id', '[0-9]+');
-Route::get('/produtos/novo', [ProdutoController::class, 'novo']);
+Route::get('/produtos/novo', [ProdutoController::class, 'novo'])->name('produto.novo');
 Route::post('/produtos/adiciona', [ProdutoController::class, 'adiciona']);

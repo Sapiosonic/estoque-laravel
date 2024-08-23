@@ -76,8 +76,6 @@
             // 3) retornar alguma view.
             // $produtos = Produto::all();
             // return view('produto.listagem')->with('produtos', $produtos);
-            return redirect('/produtos')->withInput();
-
-            // return view('produto.adicionado')->with('nome', $nome);
+            return redirect('/produtos')->withInput()->onlyInput('nome');
         }
     }

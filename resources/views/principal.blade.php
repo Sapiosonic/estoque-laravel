@@ -18,8 +18,8 @@
                     </a>
                 </div>
                 <ul class="nav navbar-right nav-menu">
-                    <li><a href="/produtos">Listagem</a></li>
-                    <li><a href="/produtos/novo">Novo</a></li>
+                    <li><a href="{{ route('produto.lista') }}">Listagem</a></li>
+                    <li><a href="{{ route('produto.novo') }}">Novo</a></li>
                 </ul>
             </div>
         </nav>
