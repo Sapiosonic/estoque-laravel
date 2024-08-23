@@ -5,6 +5,7 @@ namespace app\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProdutosRequest;
 
 
 
@@ -38,9 +39,10 @@ class ProdutoController extends Controller
         return view('produto.formulario');
     }
 
-    public function adiciona()
+    public function adiciona(ProdutosRequest $request)
     {
-        Produto::create(request()->all());
+        Produto::create($request->all());
+        // return redirect('/produtos')->withInput()->onlyInput('nome');
         return redirect('/produtos')->withInput()->onlyInput('nome');
     }
 
