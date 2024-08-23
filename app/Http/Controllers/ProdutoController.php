@@ -40,13 +40,25 @@ class ProdutoController extends Controller
 
     public function adiciona()
     {
-        // deve adicionar os produtos no banco.
-
-        // 1) pegar dados no formulário.
-        // 2) salvar no banco de dados.;
         Produto::create(request()->all());
+        return redirect('/produtos')->withInput()->onlyInput('nome');
+    }
 
-        // 3) retornar alguma view.
+    public function edita($id)
+    {
+        $produto = Produto::find($id);
+        return view('produto.editar', compact('produto'));
+    }
+
+    public function altera(Request $request, $id)
+    {
+        $produto = Produto::find($id);
+        $produto->nome = $request->input('nome');
+        $produto->descricao = $request->input('descricao');
+        $produto->valor = $request->input('valor');
+        $produto->quantidade = $request->input('quantidade');
+        $produto->save();
+        // return redirect()->route('produto.lista');
         return redirect('/produtos')->withInput()->onlyInput('nome');
     }
 
@@ -68,4 +80,5 @@ class ProdutoController extends Controller
 
         return redirect()->route('produto.lista');
     }
+
 }

@@ -7,8 +7,8 @@
             Você não tem nenhum produto cadastrado.
         </div>
     @else
-
-        <h1>Listagem de produtos</h1>
+    
+    <h1>Listagem de produtos</h1>
 
         <table class="table table-striped table-bordered table-hover">
             <thead>
@@ -16,9 +16,7 @@
                 <th>Valor</th>
                 <th>Descrição</th>
                 <th>Quantidade</th>
-                <th>Ver</th>
-                <th>Deletar</th>
-                <th>Editar</th>
+                <th>Ação</th>
             </thead>
             <tbody>
                 @foreach ($produtos as $produto)
@@ -27,9 +25,7 @@
                         <td> {{ e($produto->valor) }}</td>
                         <td> {{ e($produto->descricao) }}</td>
                         <td> {{ e($produto->quantidade) }}</td>
-                        <td><a href="{{ route('produto.mostra', $produto->id) }}"><span class="bi bi-search" aria-hidden="true"></span></a></td>
-                        <td><a href="{{ route('produto.remove', $produto->id) }}"><span class="bi bi-trash" aria-hidden="true"></span></a></td>
-                        <td><a href="{{ route('produto.edita', $produto->id) }}"><span class="bi bi-plus" aria-hidden="true"></span></a></td>
+                        <td><a href="/produtos/mostra/{{ $produto->id }}"><span class="bi bi-search" aria-hidden="true"></span></a></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -39,4 +35,8 @@
     <h4>
         <span class="badge bg-danger text-white float-end">Um ou menos itens no estoque</span>
     </h4>
+
+    <div class="alert alert-success">
+        <h6><strong>Sucesso!</strong> O produto {{ old('nome') }} foi adicionado com sucesso.</h6>
+    </div>
 @stop
