@@ -24,6 +24,13 @@
             </div>
         </nav>
         @yield('conteudo')
+        <form method="POST" action={{ route('logout') }}>
+            @csrf
+            <div>
+                <input class="menu-items btn btn-danger" type="submit" value="Sair">
+            </div>
+        </form>
+
         <footer class="footer">
             <p class="copyright">© Livro de Laravel da Casa do Código.</p>
         </footer>

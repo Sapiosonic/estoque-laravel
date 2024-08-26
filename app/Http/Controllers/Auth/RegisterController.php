@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class RegisterController extends Controller
 {
@@ -12,13 +15,28 @@ class RegisterController extends Controller
     {
         return view('auth.register');
     }
+    
+  
+
 
     public function store(RegisterRequest $request)
     {
-        $user = User::create($request->validated());
+       
+        
+    $validatedData = $request->validated();
 
-        auth()->login($user);
+    
+    $user = User::create([
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'password' => bcrypt($validatedData['password']), 
+    ]);
 
-        return redirect("/login");
+   
+    Auth::login($user);
+
+    
+    return redirect('/login');
     }
+    
 }

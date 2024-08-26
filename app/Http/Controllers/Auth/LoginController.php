@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -15,15 +16,14 @@ class LoginController extends Controller
 
     public function store(LoginRequest $request)
     {
-        dd(auth()->attempt($request->validated()));
-        if (!auth()->attempt($request->validated())) {
-            return back()
-                ->withInput($request->only('email'))
-                ->withErrors([
-                    'email' => 'The provided credentials do not match our records.',
-                ]);
+        
+        if (Auth::attempt($request->only('email', 'password'))) {
+            
+            return redirect()->intended('/home');
         }
-        dd(back()->getTargetUrl()); // Add this line
-        return redirect()->intended('/home');
+
+        return back()->withErrors([
+            'email' => 'E-Mail ou Senha incorretos.',
+        ]);
     }
 }
